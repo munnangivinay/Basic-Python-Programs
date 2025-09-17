@@ -1,0 +1,4 @@
+# create a program by getting input from the user
+
+name = input(" Enter your name:")
+print("Your name:" , name)
