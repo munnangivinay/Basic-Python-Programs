@@ -1,0 +1,4 @@
+firstname=input("Enter the firstname:")
+lastname=input("Enter the lastname:")
+concat = firstname+lastname
+print("Your fullname is:", concat)
