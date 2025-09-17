@@ -1,0 +1,6 @@
+int=10
+float=2.25
+bool=True
+print("Integer is:",int)
+print("Float is:",float)
+print("Boolan is:",bool)
