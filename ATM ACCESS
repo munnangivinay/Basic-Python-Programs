@@ -1,0 +1,7 @@
+a=int(input("if atm is inserted enter 1"))
+b=int(input("if pin is correct enter 1"))
+c=int(input("if the account is not locked enter 1"))
+if(a==1 and b==1 and c==1):
+    print("ATM is accesed")
+else:
+    print("Access is denied")
