@@ -1,0 +1,8 @@
+set={10,20,70}
+list=[5,4,7,7,13]
+tuple={50,40,10}
+dict={"one":1,"two":2}
+print("set is:",set)
+print("list is:", list)
+print("tuple is:", tuple)
+print("dictionary is:" ,dict)
