@@ -1,0 +1,81 @@
+print("Welcome to VM Restaurant")
+
+
+menu = {
+    "Tiffen": {"Idly": 10, "Dosa": 20, "Poori": 25, "Vada": 15, "Upma": 20},
+    "Lunch": {"Veg Thali": 80, "Non-Veg Thali": 120, "Chicken-Dum-Biriyani": 150, "Mutton-Dum-Biriyani": 180, "Curd-Rice": 50},
+    "Juices": {"Mango": 30, "Grape": 30, "Sapota": 35, "Banana": 25, "Faluda": 50},
+    "Snacks": {"Noodles": 60, "Fried Rice": 70, "Manchuriya": 65, "Chilly Chicken": 90, "Chicken 65": 85}
+}
+
+total_bill = 0
+order_summary = []
+
+def show_items_with_numbers(category):
+    print(f"\n{category} Items:")
+    items = list(menu[category].items())
+    for i, (item, price) in enumerate(items, start=1):
+        print(f"{i}. {item} (₹{price})")
+    return items
+
+def take_order(category):
+    items = show_items_with_numbers(category)
+    try:
+        item_choice = int(input("Enter the item number you want to order: "))
+        if 1 <= item_choice <= len(items):
+            item_name, item_price = items[item_choice - 1]
+            qty = int(input(f"Enter quantity for {item_name}: "))
+            cost = item_price * qty
+            order_summary.append((item_name, qty, cost))
+            print(f"Added {item_name} x{qty} = ₹{cost}")
+            return cost
+        else:
+            print("Invalid item number.")
+            return 0
+    except ValueError:
+        print("Please enter a valid number.")
+        return 0
+
+while True:
+    print("\nChoose Your Menu")
+    print("1. Tiffen Items")
+    print("2. Lunch Meals")
+    print("3. Juice Items")
+    print("4. Snacks")
+    print("5. Display All Menu")
+    print("6. Show Prices")
+    print("7. Exit & Show Bill")
+
+    try:
+        choice = int(input("\nEnter Your Choice: "))
+    except ValueError:
+        print("Please enter a valid number.")
+        continue
+
+    if choice == 1:
+        total_bill += take_order("Tiffen")
+    elif choice == 2:
+        total_bill += take_order("Lunch")
+    elif choice == 3:
+        total_bill += take_order("Juices")
+    elif choice == 4:
+        total_bill += take_order("Snacks")
+    elif choice == 5:
+        print("\n--- Full Menu ---")
+        for category in menu:
+            show_items_with_numbers(category)
+    elif choice == 6:
+        print("\n--- Prices ---")
+        for category in menu:
+            print(f"\n{category}:")
+            for item, price in menu[category].items():
+                print(f"{item} = ₹{price}")
+    elif choice == 7:
+        print("\n--- Final Bill ---")
+        for item, qty, cost in order_summary:
+            print(f"{item} x{qty} = ₹{cost}")
+        print(f"\nTotal Bill = ₹{total_bill}")
+        print("Thank you! Visit Again")
+        break
+    else:
+        print("INVALID CHOICE. Please try again.")
